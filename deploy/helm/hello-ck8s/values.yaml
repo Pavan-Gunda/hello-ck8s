@@ -1,18 +1,22 @@
 
 # Remember to set service.type=ClusterIP if you are using an ingress
 ingress:
-  configured: true
+  enabled: true
+  hostname: demo.pavgun-dev.a1ck.io
+  tls: true
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 
 service:
   type: ClusterIP
   port: 80
 
 deployment:
-  replicaCount: 2
+  replicaCount: 3
   container:
     image:
-      repository: "harbor.pavgun-dev.a1ck.io/demo/hello-kubernetes"
-      tag: "1.11.3" # uses chart appVersion if not provided
+      repository: "harbor.pavgun-dev.a1ck.io/demo/hello-ck8s"
+      tag: d912f2f92585b9759b00183e7d15b815cf17d6ce
       pullPolicy: IfNotPresent
     port: 8080
 
@@ -26,4 +30,3 @@ deployment:
   tolerations: []
 
   affinity: {}
-

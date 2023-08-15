@@ -1,0 +1,39 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: demo-appset
+  namespace: argocd-system
+spec:
+  generators:
+  - pullRequest:
+      github:
+        owner: Pavan-Gunda # The GitHub organization or user.
+        repo: hello-ck8s # The Github repository
+        tokenRef:
+          secretName: github-token
+          key: token
+        labels:
+        - deploy # label on PR that trigger review app
+  template:
+    metadata:
+      name: 'demo-{{branch}}-{{number}}'
+      namespace: argocd-system
+      finalizers:
+      - resources-finalizer.argocd.argoproj.io
+    spec:
+      source:
+        repoURL: https://github.com/Pavan-Gunda/hello-ck8s
+        targetRevision: '{{head_sha}}'
+        path: deploy/helm/hello-ck8s
+        helm:
+          valueFiles:
+          - values.yaml
+          - secrets://secrets.yaml
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+      project: default
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: staging

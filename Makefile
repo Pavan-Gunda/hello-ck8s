@@ -1,13 +1,9 @@
-REGISTRY ?= harbor.pavgun-dev.a1ck.io
+REGISTRY ?= harbor.long-running.dev-ck8s.com
 REPOSITORY ?= demo
 IMAGE_VERSION ?= $(shell cat src/app/package.json | jq -r .version)
 IMAGE_MAJOR_VERSION = $(shell echo "$(IMAGE_VERSION)" | cut -d '.' -f1 )
 IMAGE_MINOR_VERSION = $(shell echo "$(IMAGE_VERSION)" | cut -d '.' -f2 )
-IMAGE = $(REGISTRY)/$(REPOSITORY)/hello-kubernetes
-
-.PHONY: scan-for-vulns
-scan-for-vulns:
-	trivy image --format template --template "@/trivy/contrib/sarif.tpl" $(IMAGE):$(IMAGE_VERSION)
+IMAGE = $(REGISTRY)/$(REPOSITORY)/hello-ck8s
 
 .PHONY: build-images
 build-images: build-image-linux
