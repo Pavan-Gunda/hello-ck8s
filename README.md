@@ -1,10 +1,10 @@
 # Hello ck8s!
 
-This is a fork of https://hub.docker.com/r/paulbouwer/hello-kubernetes/
+This is a fork of https://github.com/paulbouwer/hello-kubernetes
 
 This container image can be deployed on a ck8s cluster. It runs a web app, that displays the following:
 
-- "A default 'Hello world!' message, or a custom message can be configured via secrets.yaml."
+- A default 'Hello world!' message, or a custom message can be configured via secrets.yaml.
 - namespace, pod, and node details
 - container image details
 
@@ -22,6 +22,25 @@ make push-image
 ```
 
 ## Deploy the app using an ArgoCD application
+
+### Configure an Image Pull Secret
+
+To start, make sure you configure the Kubernetes cluster with an image pull secret. Ideally, you should create a container registry [Robot Account](https://goharbor.io/docs/2.2.0/working-with-projects/project-configuration/create-robot-accounts/), which only has pull permissions and use its token.
+
+```bash
+DOCKER_USER='robot$name'       # enter robot account name
+DOCKER_PASSWORD=               # enter robot secret
+```
+
+Now create a pull secret, our service account is already configured to look for this secret.
+
+```bash
+# Create a pull secret
+kubectl create secret docker-registry pull-secret \
+    --docker-server=harbor.$DOMAIN \
+    --docker-username=$DOCKER_USER \
+    --docker-password=$DOCKER_PASSWORD -n <destionation-namespace>
+```
 
 Adjust the values in the manifest as needed and run,
 

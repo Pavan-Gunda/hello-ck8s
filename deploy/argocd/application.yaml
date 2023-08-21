@@ -14,7 +14,7 @@ spec:
     helm:
       valueFiles:
       - values.yaml
-      - secrets://secrets.yaml
+      - secrets://dev-secrets.yaml
     path: deploy/helm/hello-ck8s
     repoURL: https://github.com/Pavan-Gunda/ck8s
     targetRevision: HEAD
