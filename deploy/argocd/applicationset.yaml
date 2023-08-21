@@ -6,6 +6,7 @@ metadata:
 spec:
   generators:
   - pullRequest:
+      requeueAfterSeconds: 30
       github:
         owner: Pavan-Gunda # The GitHub organization or user.
         repo: hello-ck8s # The Github repository
@@ -28,7 +29,7 @@ spec:
         helm:
           valueFiles:
           - values.yaml
-          - secrets://secrets.yaml
+          - secrets://dev-secrets.yaml
       syncPolicy:
         automated:
           prune: true
