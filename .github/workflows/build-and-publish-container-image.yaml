@@ -27,7 +27,7 @@ jobs:
         name: Login to DockerHub
         uses: docker/login-action@v1
         with:
-          registry: harbor.pavgun-dev.a1ck.io
+          registry:  ${{ vars.REGISTRY }}
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_SECRET }}
       -
@@ -38,8 +38,7 @@ jobs:
           file: src/app/Dockerfile
           push: true
           tags: |
-            harbor.pavgun-dev.a1ck.io/demo/hello-ck8s:${{ github.event.pull_request.head.sha }}
-            harbor.pavgun-dev.a1ck.io/demo/hello-ck8s:${{ github.event.pull_request.head.ref }}
+            ${{ vars.REGISTRY }}/demo/hello-ck8s:${{ github.event.pull_request.head.sha }}
   update-tag:
     runs-on: ubuntu-latest
     needs: docker-build-push

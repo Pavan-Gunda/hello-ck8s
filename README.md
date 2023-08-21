@@ -10,9 +10,7 @@ This container image can be deployed on a ck8s cluster. It runs a web app, that 
 
 ## Quick start
 
-## Build and push image
-
-### Building a container image
+### Build/Push the container image
 
 You can build the `hello-ck8s` container image as follows:
 
