@@ -4,7 +4,7 @@ This is a fork of https://github.com/paulbouwer/hello-kubernetes
 
 This container image can be deployed on a ck8s cluster. It runs a web app, that displays the following:
 
-- "A default 'Hello world!' message, or a custom message can be configured via secrets.yaml.
+- A default 'Hello world!' message, or a custom message can be configured via secrets.yaml.
 - namespace, pod, and node details
 - container image details
 
