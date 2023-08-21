@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "hello-kubernetes.name" . }}
+  name: {{ include "hello-ck8s.name" . }}
   labels:
-    {{- include "hello-kubernetes.labels" . | nindent 4 }}
+    {{- include "hello-ck8s.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.deployment.replicaCount }}
   selector:
     matchLabels:
-      {{- include "hello-kubernetes.selectorLabels" . | nindent 6 }}
+      {{- include "hello-ck8s.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        {{- include "hello-kubernetes.selectorLabels" . | nindent 8 }}
+        {{- include "hello-ck8s.selectorLabels" . | nindent 8 }}
     spec:
-      serviceAccountName: {{ include "hello-kubernetes.name" . }}
+      serviceAccountName: {{ include "hello-ck8s.name" . }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.deployment.container.image.repository }}:{{ .Values.deployment.container.image.tag | default .Chart.AppVersion }}"
@@ -40,7 +40,7 @@ spec:
           - name: MESSAGE
             valueFrom:
               secretKeyRef:
-                name: {{ include "hello-kubernetes.name" . }}
+                name: {{ include "hello-ck8s.name" . }}
                 key: message
           {{- end }}
           {{- if .Values.ingress.configured }}
