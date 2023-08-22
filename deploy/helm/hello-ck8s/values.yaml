@@ -16,7 +16,7 @@ deployment:
   container:
     image:
       repository: "harbor.pavgun-dev.a1ck.io/demo/hello-ck8s"
-      tag: 88e3a139ca7c3a3cc441ee397f4af4d8f8b55d01
+      tag: c176767e86bf38fc7042f5934ba58efb5bbc0246
       pullPolicy: IfNotPresent
     port: 8080
 
