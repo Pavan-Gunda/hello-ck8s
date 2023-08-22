@@ -74,3 +74,5 @@ REGISTRY=harbor.$DOMAIN
 DOCKERHUB_SECRET=<create-your-own-in-harbor>
 DOCKERHUB_USERNAME=<create-your-own-in-harbor>
 ```
+
+Change
