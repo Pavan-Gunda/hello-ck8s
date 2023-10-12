@@ -7,6 +7,10 @@ ingress:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
 
+# Provide a custom message
+message: This is a dev environment
+
+
 service:
   type: ClusterIP
   port: 80
@@ -15,8 +19,8 @@ deployment:
   replicaCount: 3
   container:
     image:
-      repository: "harbor.pavgun-dev.a1ck.io/demo/hello-ck8s"
-      tag: c0190a00c842a7b5eaeae02c802f03a566791315
+      repository: "harbor.long-running.dev-ck8s.com/pavan/hello-ck8s"
+      tag: v1
       pullPolicy: IfNotPresent
     port: 8080
 
