@@ -2,7 +2,7 @@
 # Remember to set service.type=ClusterIP if you are using an ingress
 ingress:
   enabled: true
-  hostname: demo.pavgun-dev.a1ck.io
+  hostname: demo.pavgun-dev2.dev-ck8s.com
   tls: true
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
