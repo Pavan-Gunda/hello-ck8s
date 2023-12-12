@@ -14,6 +14,8 @@ spec:
       labels:
         {{- include "hello-ck8s.selectorLabels" . | nindent 8 }}
     spec:
+      securityContext:
+        runAsUser: 1000
       serviceAccountName: {{ include "hello-ck8s.name" . }}
       containers:
         - name: {{ .Chart.Name }}
