@@ -8,7 +8,7 @@ ingress:
     cert-manager.io/cluster-issuer: letsencrypt-prod
 
 # Provide a custom message
-message: This is a dev environment
+message: test-this-is-from-git
 
 
 service:

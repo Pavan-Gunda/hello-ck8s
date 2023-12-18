@@ -14,7 +14,9 @@ spec:
     helm:
       valueFiles:
       - values.yaml
-      - secrets://dev-secrets.yaml
+      fileParameters:
+        - name: message
+          path: secrets+literal://vals!ref+vault://cubbyhole/dev/#/message
     path: deploy/helm/hello-ck8s
     repoURL: git@github.com:Pavan-Gunda/hello-ck8s.git
     targetRevision: HEAD
