@@ -15,7 +15,7 @@ spec:
       valueFiles:
       - values.yaml
     path: deploy/helm/hello-ck8s
-    repoURL: git@github.com:Pavan-Gunda/hello-ck8s.git
+    repoURL: https://github.com/Pavan-Gunda/hello-ck8s.git
     targetRevision: HEAD
   syncPolicy:
     automated:

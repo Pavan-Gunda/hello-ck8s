@@ -29,7 +29,13 @@ deployment:
     kubernetes.io/os: linux
     kubernetes.io/arch: amd64
 
-  resources: {}
+  resources:
+      limits:
+        memory: 200Mi
+        cpu: 1
+      requests:
+        memory: 100Mi
+        cpu: 100m
 
   tolerations: []
 
