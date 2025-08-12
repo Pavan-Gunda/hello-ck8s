@@ -11,9 +11,6 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    helm:
-      valueFiles:
-      - values.yaml
     path: deploy/kustomize
     repoURL: git@github.com:Pavan-Gunda/hello-ck8s.git
     targetRevision: HEAD

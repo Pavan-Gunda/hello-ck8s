@@ -8,3 +8,4 @@ helmCharts:
     releaseName: my-nginx
     namespace: staging
     includeCRDs: true
+    valuesFile: values.yml
