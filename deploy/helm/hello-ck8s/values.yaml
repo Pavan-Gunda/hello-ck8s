@@ -8,7 +8,7 @@ ingress:
     cert-manager.io/cluster-issuer: letsencrypt-prod
 
 # Provide a custom message
-message: test-this-is-from-git-v3
+message: test-this-is-from-git-v4
 
 
 service:
