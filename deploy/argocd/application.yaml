@@ -17,7 +17,3 @@ spec:
     path: deploy/helm/hello-ck8s
     repoURL: https://github.com/Pavan-Gunda/hello-ck8s
     targetRevision: HEAD
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
